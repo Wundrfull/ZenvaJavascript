@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Pages with JavaScript and the DOM API</title>
+    <style>
+      #div1 {
+        background-color: #6be9b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class1" id="div1">
+      Hello
+      <div class="class1">World!</div>
+    </div>
+    <button class="class1" id="button1">Press Me</button>
+    <br />
+    <form id="form">
+      Name: <input type="text" />
+      <input type="submit" value="Save" />
+    </form>
+
+    <script>
+      var form = document.getElementById('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var textInput = form.elements[0];
+        alert(textInput.value);
+      });
+    </script>
+    <!----- EVENT LISTENER BASICS ----->
+    <!--<script>
+      // Will tell when DOM content has been loaded.
+      // document.addEventListener('DOMContentLoaded', function (event) {
+      //   alert('page has been loaded');
+      // });
+
+      document
+        .getElementById('div1')
+        .addEventListener('mouseover', function (event) {
+          event.target.style.backgroundColor = '#0000ff';
+        });
+
+      /**
+      Common HTML events
+      - onchange
+      - onclick
+      - onmouseover
+      - onmouseout
+      - onkeydown
+      - onload
+      */
+      var button1 = document.getElementById('button1');
+
+      button1.addEventListener('click', function (event) {
+        target = event.target;
+        alert(target.innerHTML);
+      });
+    </script>-->
+
+    <!----- ADD OR REMOVE OBJECTS FROM DOM ----->
+    <!--<script>
+      // Add new Div
+      var newDiv = document.createElement('div');
+      newDiv.innerHTML = 'Hello there';
+      // This will be deprecated because there is only one instance of this variable.
+      document.body.appendChild(newDiv);
+
+      var div1 = document.getElementById('div1');
+      div1.appendChild(newDiv);
+
+      // Removing div1
+      // document.body.removeChild(div1);
+    </script>-->
+
+    <!----- MANIPULATING THE DOM ----->
+    <!--<script>
+      var div1 = document.getElementById('div1');
+      var div1Class = div1.getAttribute('class');
+      var div1HTML = div1.innerHTML;
+      var noValueDiv1Color = div1.style.backgroundColor;
+      // Need to make sure this aspect of the page is loaded before we can call for the styling by using getComputedStyle()
+      var div1ComputedStyle = window.getComputedStyle(div1).backgroundColor;
+
+      div1.setAttribute('class', 'class2');
+      div1.innerHTML = 'Goodbye!';
+
+      div1.style.backgroundColor = '#000fff';
+      // setAttribute style will remove everything previous to the attribute and only the new styling
+      div1.setAttribute('style', 'height: 100px;');
+      alert();
+    </script>-->
+
+    <!----- LEARNING ABOUT DOM BASICS ----->
+    <!--<script>
+      var class1 = document.getElementsByClassName('class1');
+      var div = class1[0];
+
+      var button1 = document.getElementById('button1');
+
+      // get by tag name
+      var divs = document.getElementsByTagName('div');
+
+      // get first class
+      var first1 = document.querySelector('class1');
+
+      // get all
+      var all = document.querySelectorAll('class1');
+
+      // get second
+      var second = document.querySelectorAll('class1')[1];
+
+      // query selector branch specific of dom tree
+
+      var div1 = document.getElementById('div1');
+
+      var innerDivs = div1.getElementsByClassName('class1');
+      // This will print 'World!' because it is branch specific now that the method was rooted to div1 rather than the DOM. It also will only print World! because it is the only element with the class 'class1'
+      // alert(innerDivs[0].innerHTML);
+    </script>-->
+  </body>
+</html>
