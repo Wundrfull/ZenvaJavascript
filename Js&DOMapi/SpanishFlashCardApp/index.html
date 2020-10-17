@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spanish Flash Card App</title>
+
+    <style>
+      .container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .card {
+        width: 25%;
+      }
+
+      .cardImg {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .spanish {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+          - Create an interactive webpage to display flashcards
+          - Flashcards will have a picture, the english word, and a show/hide button
+          - Users press the show/hide button to show/hide the answer
+          - Write the HTML
+          - Style the HTML
+          - Write the code to hide/show answer
+          - Apply the code to multiple cards
+      -->
+
+    <div class="container">
+      <!--DOG-->
+      <div class="card">
+        <div class="cardImg">
+          <img
+            src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg?resize=750px:*"
+          />
+        </div>
+        <div class="cardText">
+          <button id="dogBtn">Show/Hide</button>
+          <h2 class="english">Dog</h2>
+          <h3 class="spanish" id="dogSpanish">Perro/Perra</h3>
+        </div>
+      </div>
+
+      <!--CAT-->
+      <div class="card">
+        <div class="cardImg">
+          <img
+            src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg?resize=750px:*"
+          />
+        </div>
+        <div class="cardText">
+          <button id="catBtn">Show/Hide</button>
+          <h2 class="english">Cat</h2>
+          <h3 class="spanish" id="catSpanish">Gato/Gata</h3>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var dogBtn = document.getElementById('dogBtn');
+      var dogSpanish = document.getElementById('dogSpanish');
+      dogBtn.addEventListener('click', function (event) {
+        if (dogSpanish.style.display == 'none') {
+          dogSpanish.style.display = 'block';
+        } else {
+          dogSpanish.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>
