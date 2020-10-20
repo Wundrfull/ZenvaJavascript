@@ -21,3 +21,12 @@
  *
  * Will be going over other devtools like Nodemon, Postman, and MongoDB compass.
  */
+
+/**
+ * Express Route
+ *
+ * - When you create a route in your Express application , you need to specify the method that is supported on the route.
+ *   Example: app.get('/status', (request, response) => { });
+ *
+ * - Yopu can use app.all() to load middleware functions at a particular path for all HTTP request methods.
+ */
