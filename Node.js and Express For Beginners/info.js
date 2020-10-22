@@ -96,3 +96,61 @@
  *
  * - This will make the body available under request.body
  */
+
+/**
+ * Express Router
+ *
+ * - To create an Express Router: express.Router()
+ *
+ * - Each Express Router instance is a complete middleware and routing system.
+ *
+ * - Express Routers are often referred to as `mini` Express Apps
+ */
+
+/**
+ * Dotenv
+ *
+ * - You can install Nodemon using NPM via: npm install dotenv
+ *
+ * - Dotenv is a useful package that will read in a .env file and make the values located in that file available as environment variables.
+ *
+ * - If you decided to use a .env file in your project and you use some type of source control, make sure you do not commit
+ *   this file if it has sensitive data.
+ */
+
+/**
+ * Cors
+ *
+ * - You can install Cors using NPM via: npm install cors
+ *
+ * - Cors is a NPM package for providing Express middleware that can be used to enable CORS with various options.
+ */
+
+/**
+ * Cookie-Parser
+ *
+ * - You can install cookie-parser using NPM via: npm install cookie-parser
+ *
+ * - Cookie Parser is a NPM package for parsing the Cookie header in a Express Request object. After parsing the header,
+ *   cookie-parser will populate a request.cookies object.
+ */
+
+/**
+ * Passportjs
+ *
+ * - You can install Passport using NPM via: npm install passport
+ *
+ * - You can install Passport-Local using NPM via: npm install passport-local
+ *
+ * - Passports sole purpose is to authenticate requests, and this is done using different sets of plugins, or strategies.
+ */
+
+/**
+ * Passport Local Strategy
+ *
+ * - You can install Passport-Local using NPM via: npm install passport-local
+ *
+ * - The Passport Local strategy is used for authenticating with a username and password.
+ *
+ * - This strategy requires a verify callback, which accepts the username and password credentials, and then calls done when providing a user.
+ */

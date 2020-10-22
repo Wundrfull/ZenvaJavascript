@@ -1,112 +1,37 @@
-const express = require('express');
-const app = express();
-const port = 8080;
-const bodyParser = require('body-parser');
+require('dotenv').config();
 
-// Middleware is ran top to bottom, and we want bodyParser to be used throughout, so we place at beginning.
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+const routes = require('./routes/main');
+const passwordRoutes = require('./routes/password');
+
+const app = express();
+const port = process.env.PORT || 4200;
 
 /**
  * Update express settings
+ *
+ *  Middleware is ran top to bottom, and we want bodyParser to be used throughout, so we place at beginning.
  */
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded data
 app.use(bodyParser.json()); // parse application/json
+app.use(cookieParser());
+app.use(cors({ credentials: true, origin: process.env.CORS_ORIGIN }));
+
+// require passport auth
+require('./auth/auth');
 
 /**
- * Telling express that anytime there is a get request at this route. This
- * is the callback function we want to run at this request.
+ * We will be using the basic '/' which will make the middleware check both files.
+ * For future purposes, you can specify routes, '/specified/route/' and it will only check one file.
  */
-app.get('/', (request, response) => {
-  response.send('Hello World!');
-});
+app.use('/', routes);
+app.use('/', passwordRoutes);
 
-/**
- * Additional Route. Status route to see status of application. Makes
- * users aware that API is working. Devs can monitor health of api as well.
- */
-app.get('/status', (request, response) => {
-  response.status(200).json({ message: 'ok', status: 200 });
-});
-
-/**
- * Signup endpoint.
- */
-app.post('/signup', (request, response, next) => {
-  // Check if  client doesn't provide the correct elements for the request.
-  if (!request.body) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    response.status(200).json({ message: 'ok', status: 200 });
-  }
-});
-
-/**
- * Login endpoint.
- */
-app.post('/login', (request, response) => {
-  // Check if  client doesn't provide the correct elements for the request.
-  if (!request.body) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    response.status(200).json({ message: 'ok', status: 200 });
-  }
-});
-
-/**
- * Logout endpoint.
- */
-app.post('/logout', (request, response) => {
-  // Check if  client doesn't provide the correct elements for the request.
-  if (!request.body) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    response.status(200).json({ message: 'ok', status: 200 });
-  }
-});
-
-/**
- * Token endpoint.
- */
-app.post('/token', (request, response) => {
-  if (!request.body || !request.body.refreshToken) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    const { refreshToken } = request.body;
-    response.status(200).json({
-      message: `refresh token requested for token: ${refreshToken}`,
-      status: 200,
-    });
-  }
-});
-
-/**
- * Forget Password endpoint.
- */
-app.post('/forgot-password', (request, response) => {
-  if (!request.body || !request.body.email) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    const { email } = request.body;
-    response.status(200).json({
-      message: `forgot password requested for email: ${email}`,
-      status: 200,
-    });
-  }
-});
-
-/**
- * Reset Password endpoint.
- */
-app.post('/reset-password', (request, response) => {
-  if (!request.body || !request.body.email) {
-    response.status(400).json({ message: 'invalid body', status: 400 });
-  } else {
-    const { email } = request.body;
-    response.status(200).json({
-      message: `password reset requested for email: ${email}`,
-      status: 200,
-    });
-  }
-});
+// setup routes
 
 // Catch all other routes
 app.use((request, response) => {
