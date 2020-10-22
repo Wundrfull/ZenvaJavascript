@@ -78,3 +78,21 @@
  * - When you want to add an Error middleware handler, or a 404 handler, you need to make sure these are added at the
  *   end after all your other routes.
  */
+
+/**
+ * Express Request Object
+ *
+ * - When you create your Express routes, you will receive both the Express Request and Express Response objects.
+ *
+ * - The Express Request object will have all of the meta data tied to the incoming request.
+ */
+
+/**
+ * Body-parser
+ *
+ * - You can install body-parser using NPM via: npm install body-parser
+ *
+ * - Body-parser is used to parse incoming request bodies in a middleware before those request get to your handlers.
+ *
+ * - This will make the body available under request.body
+ */
